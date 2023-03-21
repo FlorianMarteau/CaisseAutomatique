@@ -84,7 +84,7 @@ namespace CaisseAutomatique.VueModel
             if (e.PropertyName == "Message")
             {
                 this.NotifyPropertyChanged("Message");
-            } 
+            }
         }
 
         /// <summary>
