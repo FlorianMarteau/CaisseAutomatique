@@ -63,7 +63,8 @@ namespace CaisseAutomatique.Model.Automates
         {
             etatCourant.Action(e);
             this.etatCourant = etatCourant.Transition(e);
-           NotifyPropertyChanged("Message");
+            this.etatCourant.PropertyChanged += EtatCourant_PropertyChanged;
+            NotifyPropertyChanged("Message");
 
         }
 

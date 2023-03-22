@@ -19,8 +19,14 @@ namespace CaisseAutomatique.Model.Automates.Etats
             switch (e)
             {
                 case Evenement.SCAN_ARTICLE:
-                    this.Caisse.RegisterArticle();
-                    NotifyPropertyChanged("ScanArticleDenombrable");
+                    if (!this.Caisse.DernierArticleScanne.IsDenombrable)
+                    {
+                        this.Caisse.RegisterArticle();
+                    }
+                    else
+                    {
+                        NotifyPropertyChanged("ScanArticleDenombrable");
+                    }
                     break;
             }
         }
@@ -31,7 +37,14 @@ namespace CaisseAutomatique.Model.Automates.Etats
             switch (e)
             {
                 case Evenement.SCAN_ARTICLE:
-                    etasuivant = new EtatAttenteProduit(this.Caisse,Automate);
+                    if (!this.Caisse.DernierArticleScanne.IsDenombrable)
+                    {
+                        etasuivant = new EtatAttenteProduit(this.Caisse, Automate);
+                    }
+                    else
+                    {
+                        etasuivant = new EtatSaisiQuantite(this.Caisse, Automate);
+                    }
                     break;
 
             }

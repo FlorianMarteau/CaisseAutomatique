@@ -12,15 +12,29 @@ namespace CaisseAutomatique.Model.Automates.Etats
         {
         }
 
-        public override string Message => throw new NotImplementedException();
+        public override string Message => "Combien d'articles souhaitez vous ajouter ? ";
 
         public override void Action(Evenement e)
         {
+            switch (e)
+            {
+                case Evenement.SAISIEQUANTITE:
+                    this.Caisse.RegisterArticle(this.Caisse.QuantiteSaise);
+                    break;
+            }
         }
 
         public override Etat Transition(Evenement e)
         {
-            throw new NotImplementedException();
+            Etat etasuivant = this;
+            switch (e)
+            {
+                case Evenement.SAISIEQUANTITE:
+                    etasuivant = new EtatAttenteProduit(this.Caisse, Automate);
+                    break;
+
+            }
+            return etasuivant;
         }
     }
 }

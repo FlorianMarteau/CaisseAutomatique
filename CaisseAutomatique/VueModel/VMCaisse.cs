@@ -192,6 +192,7 @@ namespace CaisseAutomatique.VueModel
         public void SaisirNombreArticle(int nbArticle)
         {
             this.metier.SaisieQuantite(nbArticle);
+            this.automate.Activer(Evenement.SAISIEQUANTITE);
         }
 
         /// <summary>

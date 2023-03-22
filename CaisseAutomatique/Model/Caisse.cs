@@ -154,6 +154,7 @@ namespace CaisseAutomatique.Model
             {
                 this.articles.Add(dernierArticleScanne);
             }
+
             NotifyPropertyChanged("Articles");
         }
 
