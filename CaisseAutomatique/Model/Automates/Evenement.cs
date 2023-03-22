@@ -12,6 +12,7 @@ namespace CaisseAutomatique.Model.Automates
         POSER_BALANCE,
         ENLEVER_BALANCE,
         PAYER,
-        RESET
+        RESET,
+        SAISIEQUANTITE
     }
 }

@@ -39,6 +39,20 @@ namespace CaisseAutomatique.Model.Automates
         {
             this.caisse = c;
             this.etatCourant = new EtatAttenteClient(caisse,this);
+            this.etatCourant.PropertyChanged += EtatCourant_PropertyChanged;
+        }
+        /// <summary>
+        /// Permet de notifier le changement d'état
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void EtatCourant_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "ScanArticleDenombrable"){
+                NotifyPropertyChanged("ScanArticleDenombrable");
+            }
+                
         }
 
         /// <summary>
@@ -50,6 +64,7 @@ namespace CaisseAutomatique.Model.Automates
             etatCourant.Action(e);
             this.etatCourant = etatCourant.Transition(e);
            NotifyPropertyChanged("Message");
+
         }
 
         /// <summary>

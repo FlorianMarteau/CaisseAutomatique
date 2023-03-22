@@ -148,9 +148,12 @@ namespace CaisseAutomatique.Model
         /// <summary>
         /// Permet d'enregistrer l'article
         /// </summary>
-        public void RegisterArticle()
-        {
-            this.articles.Add(dernierArticleScanne) ;
+        public void RegisterArticle(int quantite = 1)
+        { 
+            for (int i = 0; i < quantite; i++)
+            {
+                this.articles.Add(dernierArticleScanne);
+            }
             NotifyPropertyChanged("Articles");
         }
 

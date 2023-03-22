@@ -20,6 +20,7 @@ namespace CaisseAutomatique.Model.Automates.Etats
             {
                 case Evenement.SCAN_ARTICLE:
                     this.Caisse.RegisterArticle();
+                    NotifyPropertyChanged("ScanArticleDenombrable");
                     break;
             }
         }

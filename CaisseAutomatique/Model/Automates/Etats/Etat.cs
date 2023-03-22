@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CaisseAutomatique.Model.Automates.Etats
 {
-    public abstract class Etat
+    public abstract class Etat : INotifyPropertyChanged
     {
 
         private Automate automate;
 
         private Caisse caisse;
+
+        /// <summary>
+        /// Evenement de l'observation
+        /// </summary>
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Représente l'automate pour le manipuler
@@ -50,5 +57,14 @@ namespace CaisseAutomatique.Model.Automates.Etats
         /// </summary>
         /// <param name="e">évènement à effectuer</param>
         public abstract void Action(Evenement e);
+
+        /// <summary>
+        /// Permet de notifier l'ihm que l'état a changé
+        /// </summary>
+        /// <param name="propertyName"></param>
+        protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

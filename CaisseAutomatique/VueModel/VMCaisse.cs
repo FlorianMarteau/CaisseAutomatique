@@ -85,6 +85,10 @@ namespace CaisseAutomatique.VueModel
             {
                 this.NotifyPropertyChanged("Message");
             }
+            else if (e.PropertyName == "ScanArticleDenombrable")
+            {
+                this.OuvrirEcranSelectionQuantite();
+            }
         }
 
         /// <summary>
