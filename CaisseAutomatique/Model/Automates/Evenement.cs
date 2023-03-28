@@ -13,6 +13,10 @@ namespace CaisseAutomatique.Model.Automates
         ENLEVER_BALANCE,
         PAYER,
         RESET,
-        SAISIEQUANTITE
+        SAISIEQUANTITE,
+        DEBUT_ADMIN,
+        FIN_ADMIN,
+        ANNULER_ARTICLE,
+        ANNULER_COMMANDE
     }
 }

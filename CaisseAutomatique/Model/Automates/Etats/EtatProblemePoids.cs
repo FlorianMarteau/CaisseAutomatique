@@ -16,7 +16,12 @@ namespace CaisseAutomatique.Model.Automates.Etats
 
         public override void Action(Evenement e)
         {
-
+            switch (e)
+            {
+                case Evenement.DEBUT_ADMIN:
+                    NotifyPropertyChanged("OuvrirAdministration");
+                    break;
+            }
         }
 
         public override Etat Transition(Evenement e)
@@ -35,6 +40,9 @@ namespace CaisseAutomatique.Model.Automates.Etats
                     {
                         etaCourant = new EtatAttenteProduit(this.Caisse, this.Automate);
                     }
+                    break;
+                case Evenement.DEBUT_ADMIN:
+                    etaCourant = new EtatAdministrateur(this.Caisse, this.Automate);
                     break;
             }
             return etaCourant;

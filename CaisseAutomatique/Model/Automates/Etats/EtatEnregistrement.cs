@@ -32,6 +32,9 @@ namespace CaisseAutomatique.Model.Automates.Etats
                 case Evenement.PAYER:
                     this.Caisse.Payer();
                     break;
+                case Evenement.DEBUT_ADMIN:
+                    NotifyPropertyChanged("OuvrirAdministration");
+                    break;
             }
         }
 
@@ -62,6 +65,9 @@ namespace CaisseAutomatique.Model.Automates.Etats
                     {
                         etasuivant = new EtatSaisiQuantite(this.Caisse, Automate);
                     }
+                    break;
+                case Evenement.DEBUT_ADMIN:
+                    etasuivant = new EtatAdministrateur(this.Caisse, this.Automate);
                     break;
 
 

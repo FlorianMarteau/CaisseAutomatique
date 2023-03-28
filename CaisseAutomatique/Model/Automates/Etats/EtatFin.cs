@@ -32,6 +32,7 @@ namespace CaisseAutomatique.Model.Automates.Etats
             switch (e)
             {
                 case Evenement.RESET:
+                    
                     this.Caisse.Reset();
                     break;
             }

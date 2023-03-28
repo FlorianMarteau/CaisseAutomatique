@@ -31,6 +31,7 @@ namespace CaisseAutomatique.Model.Automates
         /// </summary>
         public string Message { get => etatCourant.Message; }
 
+
         /// <summary>
         /// Constructeur de la classe automate
         /// </summary>
@@ -52,7 +53,11 @@ namespace CaisseAutomatique.Model.Automates
             if (e.PropertyName == "ScanArticleDenombrable"){
                 NotifyPropertyChanged("ScanArticleDenombrable");
             }
-                
+            else if (e.PropertyName == "OuvrirAdministration")
+            {
+                NotifyPropertyChanged("OuvrirAdministration");
+            }
+
         }
 
         /// <summary>

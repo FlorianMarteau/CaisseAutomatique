@@ -146,6 +146,18 @@ namespace CaisseAutomatique.Model
         }
 
         /// <summary>
+        /// Permet d'enlever le dernier article
+        /// </summary>
+        public void CancelLastArticle()
+        {
+            if (articles.Count > 0)
+            {
+                this.articles.RemoveAt(this.articles.Count - 1);
+                NotifyPropertyChanged("Articles");
+            } 
+        }
+
+        /// <summary>
         /// Permet d'enregistrer l'article
         /// </summary>
         public void RegisterArticle(int quantite = 1)
